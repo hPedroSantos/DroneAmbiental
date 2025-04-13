@@ -1,0 +1,51 @@
+# Bytecode Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Ambientes virtuais
+venv/
+.env/
+.venv/
+ambientalproject
+.ambientalproject
+../ambientalproject
+
+# Arquivos de configuração do sistema/editor
+*.swp
+*.swo
+*.DS_Store
+*.idea/
+*.vscode/
+
+# Arquivos de dependências
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Cache de testes ou builds
+*.egg-info/
+dist/
+build/
+
+# Arquivos sensíveis
+.env
+*.key
+*.pem
+
+# Banco de dados SQLite (se usar)
+*.sqlite3
+
+# Logs
+*.log
+
+# Relatórios ou arquivos temporários
+*.tmp
+*.bak
+
+# Ferramentas como pytest, coverage, mypy, etc.
+htmlcov/
+.coverage
+.cache/
+.mypy_cache/
+.pytest_cache/
+.vulture_ignore.py
