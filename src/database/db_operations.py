@@ -1,24 +1,41 @@
-from database.db_conn import session, Sensor
+from database.db_conn import session, SensorCO, SensorQualidadeAr
+from database.tableconfig import tables
 
-def add_database(topico, valor):
-    sensor = Sensor(topico=topico, valor=valor)
-    session.add(sensor)
-    session.commit()
 
-def fetch_database():
-    list_sensor_data = session.query(Sensor).all()
+def fetch_db_co():
 
-    data = []
+    sensor_co_query = session.query(SensorCO).all()
 
-    for item in list_sensor_data:
+    data_co = []
+
+    for item in sensor_co_query:
         res = {
             "id": item.id,
             "topico": item.topico,
             "valor": item.valor,
             "data": item.data
         }
-        data.append(res)
+        data_co.append(res)
 
     session.close()
 
-    return data
+    return data_co
+
+def fetch_db_qual():
+
+    sensor_qual_query = session.query(SensorQualidadeAr).all()
+
+    data_qual = []
+
+    for item in sensor_qual_query:
+        res = {
+            "id": item.id,
+            "topico": item.topico,
+            "valor": item.valor,
+            "data": item.data
+        }
+        data_qual.append(res)
+
+    session.close()
+
+    return data_qual
