@@ -27,7 +27,7 @@ def add_db():
             return data
         
         elif data["topico"] == "qual_ar":
-            sensor_qual_ar = SensorCO(topico=data["topico"], valor=data["valor"])
+            sensor_qual_ar = SensorQualidadeAr(topico=data["topico"], valor=data["valor"])
             session.add(sensor_qual_ar)
             session.commit()
 
