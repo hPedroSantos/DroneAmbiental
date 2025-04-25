@@ -31,8 +31,20 @@ session = Session()
 
 Base = declarative_base()
 
-class Sensor(Base):
-    __tablename__ = "sensor_data"
+class SensorCO(Base):
+    __tablename__ = "co"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    topico = Column(String(15), nullable=False)
+    valor = Column(String(15), nullable=False)
+    data = Column(DateTime, default=datetime.now)
+
+    def __init__(self, topico, valor):
+        self.topico = topico
+        self.valor = valor
+
+
+class SensorQualidadeAr(Base):
+    __tablename__ = "qual_ar"
     id = Column(Integer, primary_key=True, autoincrement=True)
     topico = Column(String(15), nullable=False)
     valor = Column(String(15), nullable=False)
@@ -44,26 +56,3 @@ class Sensor(Base):
 
 
 Base.metadata.create_all(bind=engine)
-
-def add_database(topico, valor):
-    sensor = Sensor(topico=topico, valor=valor)
-    session.add(sensor)
-    session.commit()
-
-def fetch_database():
-    list_sensor_data = session.query(Sensor).all()
-
-    data = []
-
-    for item in list_sensor_data:
-        res = {
-            "id": item.id,
-            "topico": item.topico,
-            "valor": item.valor,
-            "data": item.data
-        }
-        data.append(res)
-
-    session.close()
-
-    return data
